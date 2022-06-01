@@ -158,3 +158,4 @@ sketch
 # End of https://www.toptal.com/developers/gitignore/api/node,react
 
 /config/config.env
+dbcommands.sql

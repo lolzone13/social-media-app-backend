@@ -10,7 +10,6 @@ const xss = require('xss-clean');
 dotenv.config({ path: './config/config.env' });
 
 
-
 const app = express();
 
 // middlewares
@@ -22,7 +21,6 @@ app.use(xss());
 
 
 // cors
-
 const corsOptions = {
   origin: (origin, callback) => {
     callback(null, true);
