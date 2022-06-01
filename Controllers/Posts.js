@@ -2,11 +2,9 @@ const db = require('../db');
 
 
 
-exports.getAllPosts = async (req, res, next) => {
-
-    const posts = await db.query('SELECT * FROM posts');
-    
+exports.getAllPosts = async (req, res, next) => {    
     try {
+        const posts = await db.query('SELECT * FROM posts');
         res.status(200).json({
             success: true,
             data: posts.rows,
@@ -22,12 +20,14 @@ exports.getAllPosts = async (req, res, next) => {
 }
 
 
-exports.getPost = (req, res, next) => {
-
+exports.getPost = async (req, res, next) => {
+    
     try {
+        const post = await db.query(`SELECT * FROM posts where id::text=\'${req.params.id}\'`);
+        console.log(post);
         res.status(200).json({
             success: true,
-            data: { content: "One Post" }
+            data: post.rows
         });
     } catch (error) {
         res.status(500).json({
@@ -37,7 +37,23 @@ exports.getPost = (req, res, next) => {
     }
 }
 
-exports.postPost = (req, res, next) => {
+exports.postPost = async (req, res, next) => {
+    try {
+
+        const del = db.query(`INSERT INTO POSTS`)
+        res.status(200).json({
+            success: true,
+            data: req.body
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            error: "Server Error"
+        });
+    }
+}
+
+exports.deletePosts = async (req, res, next) => {
     try {
         res.status(200).json({
             success: true,

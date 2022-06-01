@@ -6,12 +6,12 @@ const { getUsers } = require("../Controllers/Users");
 
 router
     .route("/posts")
-    .get(getAllPosts);
-
+    .get(getAllPosts)
+    .post(postPost);
 router
     .route("/posts/:id")
-    .get(getPost)
-    .post(postPost);
+    .get(getPost);
+
 
 router
     .route("/users")
