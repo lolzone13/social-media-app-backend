@@ -14,8 +14,11 @@ const app = express();
 
 // middlewares
 app.use(express.json());
-app.use(express.urlencoded({extended: true}));
-app.use(morgan('dev'));
+app.use(express.urlencoded({ extended: true }));
+if (process.env.ENVIRONMENT === "dev") {
+  app.use(morgan('dev'));
+}
+
 app.use(helmet());
 app.use(xss());
 
@@ -40,10 +43,10 @@ app.use('/api/v1/', posts);
 
 
 // 404
-app.all( '*' , (req, res, next) => {
-    res.status(404).send('Page Not Found!');
+app.all('*', (req, res, next) => {
+  res.status(404).send('Page Not Found!');
 })
 
 app.listen(process.env.PORT, () => {
-    console.log('Listening on PORT 5000!'.rainbow)
+  console.log('Listening on PORT 5000!'.rainbow)
 })

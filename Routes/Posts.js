@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const { getAllPosts, getPost, postPost } = require("../Controllers/posts");
+const { getAllPosts, getPost, postPost, deletePosts } = require("../Controllers/posts");
 const { getUsers } = require("../Controllers/Users");
 
 router
@@ -10,7 +10,8 @@ router
     .post(postPost);
 router
     .route("/posts/:id")
-    .get(getPost);
+    .get(getPost)
+    .delete(deletePosts);
 
 
 router
