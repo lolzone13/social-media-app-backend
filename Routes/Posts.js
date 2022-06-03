@@ -12,7 +12,7 @@ router
     .route("/posts/:id")
     .get(getPost)
     .delete(deletePosts)
-    .update(updatePosts);
+    .put(updatePosts);
 
 
 router

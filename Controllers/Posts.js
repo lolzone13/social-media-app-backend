@@ -14,7 +14,8 @@ exports.getAllPosts = async (req, res, next) => {
     } catch (error) {
         res.status(500).json({
             success: false,
-            error: "Server Error"
+            error: "Server Error",
+            message: error
         })
     }
 }
@@ -34,7 +35,8 @@ exports.getPost = async (req, res, next) => {
     } catch (error) {
         res.status(500).json({
             success: false,
-            error: "Server Error"
+            error: "Server Error",
+            message: error
         })     
     }
 }
@@ -53,7 +55,8 @@ exports.postPost = async (req, res, next) => {
     } catch (error) {
         res.status(500).json({
             success: false,
-            error: "Server Error"
+            error: "Server Error",
+            message: error
         });
     }
 }
@@ -75,14 +78,16 @@ exports.deletePosts = async (req, res, next) => {
         else {
             res.status(404).json({
                 success: false,
-                error: "No such row"
+                error: "No such row",
+                message: error
             })
         }
 
     } catch (error) {
         res.status(500).json({
             success: false,
-            error: "Server Error"
+            error: "Server Error",
+            message: error
         });
     }
 }
@@ -95,9 +100,10 @@ exports.updatePosts = async (req, res, next) => {
 
 
         if (post.rows.length > 0) {
-            const dbQuery = `UPDATE posts SET email=$1, title=$2, body=$3 upvotes=$4 downvotes=$5 tag=$6,  WHERE id::text=$7 RETURNING *`;
+            const dbQuery = `UPDATE posts SET email=$1, title=$2, body=$3, upvotes=$4, downvotes=$5, tag=$6 WHERE id::text=$7 RETURNING * `;
             const data = [ req.body.email, req.body.title, req.body.body, req.body.upvotes, req.body.downvotes, req.body.tag, req.params.id];
             const upd = await db.query(dbQuery, data);
+
             res.status(200).json({
                 success: true,
                 data: upd.rows
@@ -106,14 +112,16 @@ exports.updatePosts = async (req, res, next) => {
         else {
             res.status(404).json({
                 success: false,
-                error: "No such row"
+                error: "No such row",
+                message: error
             })
         }
 
     } catch (error) {
         res.status(500).json({
             success: false,
-            error: "Server Error"
+            error: "Server Error",
+            message: error
         });
     }
 }
