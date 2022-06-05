@@ -7,7 +7,7 @@ const cors = require('cors');
 const status = require('http-status');
 const xss = require('xss-clean');
 
-dotenv.config({ path: './config/config.env' });
+dotenv.config({ path: './Config/config.env' });
 
 
 const app = express();
@@ -36,17 +36,19 @@ const corsOptions = {
 app.options('*', cors(corsOptions));
 app.use(cors(corsOptions));
 
+const auth = require('./Routes/JwtAuth');
+app.use('/api/v1/auth', auth);
 
 const posts = require('./Routes/Posts');
 app.use('/api/v1/', posts);
 
 
 
-// 404
+// 404 route
 app.all('*', (req, res, next) => {
   res.status(404).send('Page Not Found!');
-})
+});
 
 app.listen(process.env.PORT, () => {
   console.log('Listening on PORT 5000!'.rainbow)
-})
+});
