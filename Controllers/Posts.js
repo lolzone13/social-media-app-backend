@@ -1,4 +1,5 @@
 const db = require('../db');
+const { post } = require('../Routes/Posts');
 
 
 
@@ -7,7 +8,7 @@ exports.getAllPosts = async (req, res, next) => {
         const posts = await db.query('SELECT * FROM posts');
         res.status(200).json({
             success: true,
-            data: posts.rows,
+            data: post.rows
 
             
         });

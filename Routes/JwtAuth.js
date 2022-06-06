@@ -14,9 +14,10 @@ router
 router
     .route('/login')
     .post(validateEmail, loginUsers);
+    
 router
-.route('/verify')
-.get(authorization, verifyAuth);
+    .route('/verify')
+    .get(authorization, verifyAuth);
 
 
 module.exports = router;
