@@ -8,7 +8,7 @@ exports.getAllPosts = async (req, res, next) => {
         const posts = await db.query('SELECT * FROM posts');
         res.status(200).json({
             success: true,
-            data: post.rows
+            data: posts.rows
 
             
         });
