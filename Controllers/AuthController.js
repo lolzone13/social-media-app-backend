@@ -24,13 +24,20 @@ exports.registerUsers = async (req, res, next) => {
 
             const token = jwtGenerator(newUser.rows[0].id);
             
-            res.json({ token });
+            res.status(200).json({ 
+                success: true,
+                token: token,
+                data: {
+                    username: newUser.rows[0].username,
+                    email: newUser.rows[0].email
+                }
+            });
         }
     } catch (error) {
-        
+        console.log(error);
         res.status(500).json({
             success: false,
-            error: "Server error"
+            error: error
         });
     }
 }
@@ -58,12 +65,19 @@ exports.loginUsers = async (req, res, next) => {
             }
             else {
                 const token = jwtGenerator(user.rows[0].id);
-                res.json({ token });
+                res.status(200).json({ 
+                    success: true,
+                    token: token,
+                    data: {
+                        username: user.rows[0].username,
+                        email: user.rows[0].email
+                    }
+                });
             }
         }
 
     } catch (error) {
-        
+        console.log(error);
         res.status(500).json({
             success: false,
             error: "Server error"
