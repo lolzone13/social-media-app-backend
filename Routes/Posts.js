@@ -7,7 +7,7 @@ const authorization = require('../Middleware/Authorization');
 
 router
     .route("/posts")
-    .all(authorization)
+    //.all(authorization)
     .get(getAllPosts)
     .post(postPost);
 
