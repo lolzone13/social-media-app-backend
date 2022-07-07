@@ -4,11 +4,11 @@
   "description": "Backend for social-media-app",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server"
+    "start": "node index.js"
   },
   "engines": {
-    "node": "16.x"
+    "node": "16.13.1",
+    "npm": "8.1.2"
   },
   "repository": {
     "type": "git",

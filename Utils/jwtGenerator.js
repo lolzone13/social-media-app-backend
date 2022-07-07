@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv');
-dotenv.config({ path: '../Config/config.env' });
+dotenv.config({ path: '../config.env' });
 
 
 const jwtGenerator = (user_id) => {

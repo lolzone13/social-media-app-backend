@@ -7,7 +7,7 @@ const cors = require('cors');
 const status = require('http-status');
 const xss = require('xss-clean');
 
-dotenv.config({ path: './Config/config.env' });
+dotenv.config({ path: './config.env' });
 
 
 const app = express();
