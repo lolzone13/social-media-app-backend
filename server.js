@@ -49,6 +49,6 @@ app.all('*', (req, res, next) => {
   res.status(404).send('Page Not Found!');
 });
 
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT || 5000, () => {
   console.log('Listening on PORT 5000!'.rainbow)
 });
