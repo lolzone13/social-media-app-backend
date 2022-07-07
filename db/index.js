@@ -1,7 +1,7 @@
 const { Pool } = require('pg')
 const dotenv = require('dotenv').config();
 
-const prodConfig = process.env.DATABASE_URI; 
+const prodConfig = process.env.DATABASE_URL; 
 
 let pool;
 
