@@ -10,7 +10,10 @@ if (process.env.ENVIRONMENT === 'dev') {
 }
 else {
   pool = new Pool({
-    connectionString: prodConfig
+    connectionString: prodConfig,
+    ssl: {
+      rejectUnauthorized: false,
+    }
   })
 }
 
